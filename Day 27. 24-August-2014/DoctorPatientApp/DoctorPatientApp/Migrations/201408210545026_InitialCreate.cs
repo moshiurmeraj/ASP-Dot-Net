@@ -1,0 +1,28 @@
+namespace DoctorPatientApp.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class InitialCreate : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.Articles",
+                c => new
+                    {
+                        ArticleId = c.Int(nullable: false, identity: true),
+                        ArticleHeading = c.String(nullable: false),
+                        ArticleContent = c.String(nullable: false),
+                        Picture = c.String(),
+                    })
+                .PrimaryKey(t => t.ArticleId);
+            
+        }
+        
+        public override void Down()
+        {
+            DropTable("dbo.Articles");
+        }
+    }
+}
